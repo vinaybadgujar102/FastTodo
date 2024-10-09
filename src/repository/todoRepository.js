@@ -5,7 +5,9 @@ class TodoRepository {
     this.db = db;
   }
 
-  async getAll() {}
+  async getAll() {
+    return this.db.todos;
+  }
 
   async create(todoText) {
     const todoList = this.db.todos;
@@ -16,11 +18,17 @@ class TodoRepository {
     return this.db.todos;
   }
 
-  async getOne(id) {}
+  async getOne(id) {
+    return this.db.todos[id];
+  }
 
-  async deleteOne(id) {}
+  async deleteOne(id) {
+    this.db.todos.splice(id, 1);
+  }
 
-  async deleteAll() {}
+  async deleteAll() {
+    this.db.todos = [];
+  }
 }
 
 async function todoRepository(fastify, options) {
